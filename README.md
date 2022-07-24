@@ -1,3 +1,5 @@
+<img src="./home.jpeg" alt="page home" title="audiophile">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

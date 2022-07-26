@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import styled from 'styled-components';
+import Cart from '../../Cart';
 
 const NavBar = styled.div`
     background-color: #000;
@@ -12,8 +13,10 @@ const NavBar = styled.div`
     height: 80px;
     z-index: 999;
 
-    @media screen and (max-width: 960px){
-      /* padding: 0; */
+    button{
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
 
 `
@@ -88,7 +91,7 @@ const NavbarContainer = styled.div`
       }
 
       ul.active {
-        height: 35vh;
+        height: 55vh;
         z-index: 99;
         transition: all 0.8s ease;
         opacity: 1;
@@ -135,9 +138,14 @@ const NavbarMenu = styled.ul`
 function Navbar() {
 
 const [open, setOpen] = useState(false)
+const [checkout, setCheckout] = useState(false)
 
 const toggle = () => {
   setOpen(!open)
+}
+
+const check = () => {
+  setCheckout(!checkout)
 }
 
   return (
@@ -169,13 +177,15 @@ const toggle = () => {
                 </li>
             </NavbarMenu>
             <div className="navbar__icon-card">
-              <a href="/" className="button">
+              <button className="button" onClick={check}>
                 <img src="/assets/shared/desktop/icon-cart.svg" alt="icon-cart"/>
-              </a>      
+              </button>      
             </div>
         </NavbarContainer>
       </NavBar>
       <div className='underline'></div>
+      {checkout && <Cart checkout={checkout} />}
+    
 
     </header>
   )

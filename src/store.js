@@ -3,11 +3,11 @@ import thunk from 'redux-thunk';
 import { cartReducer } from './reducer/cartReducer';
 
 const initialState = {
-   cart: []
+   cart: [],
 };
 
 const reducer = combineReducers({
-    cart : cartReducer
+    cart : cartReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

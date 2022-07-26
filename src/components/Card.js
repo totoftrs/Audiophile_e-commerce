@@ -6,21 +6,39 @@ import { addToCart } from '../actions/cartAction';
 import { useDispatch } from 'react-redux';
 
 const CardProduct = styled.div`
-display: flex;
-gap: 6rem;
-width: 100%;
-padding-top: 8rem;
 
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 12.5rem;
+justify-content: space-between;
+margin-bottom: 6rem;
+
+@media (max-width: 960px){
+  gap: 5rem;
+}
 .card__two{
 flex-direction: row-reverse;
 }
-figure{
-max-width: 42%;
-}
 
+.content .card__info{
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  margin: auto;
+}
+.content img{
+  margin-bottom: 4rem;
+}
+.content p{
+  text-align: center;
+}
+picture {
+  max-width: 40%;
+}
 img{
-width: 100%;
-margin-right: 30rem;
+height: auto;
+max-width: 100%;
 }
 
 
@@ -32,7 +50,6 @@ align-items: self-start;
 max-width: 44%;
 z-index: 1;
 color: #000;
-margin-right: 4rem;
 }
 
 .txtIntro{
@@ -63,11 +80,15 @@ color: #979797;
   color: #fff;
   border: none;
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 700;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
   letter-spacing: 1px;
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1.5rem;
   text-transform: uppercase;
+  -webkit-transition: .5s;
   transition: .5s;
 }
 .container__button{
@@ -79,7 +100,7 @@ color: #979797;
   display: flex;
   position: relative;
   justify-content: space-between;
-  width: 9rem;
+  width: 8rem;
   align-items: center;
   padding: 0.5rem 1.5rem;
   background-color: #f1f1f1;
@@ -99,7 +120,7 @@ cursor: pointer;
 const Button = styled.a`
 border: none;
 display: inline-block;
-font-size: 1.2rem;
+font-size: 1rem;
 font-weight: 700;
 letter-spacing: 1px;
 padding: 1.5rem 3.5rem;
@@ -133,14 +154,14 @@ function Card({title,formatMoney}) {
 
     if(findProductId){
       const addTo = (params, count) => {
-        console.log (params, count)
           dispatch(addToCart(params, count))
       }
         return(
             <CardProduct className='card'>
-                <figure>
+                <picture>
+                    <source media="(max-width: 960px)" srcSet={findProductId.image.tablet} />
                     <img src={findProductId.categoryImage.desktop} alt={findProductId.name}/>
-                </figure>
+                </picture>
                 <div className='card__info'>
                     {findProductId.new && <div className='txtIntro'>New product</div>}
                     <h2>{findProductId.name}</h2>
@@ -161,16 +182,20 @@ function Card({title,formatMoney}) {
     }
   return (
     <CardProduct className='card'>
-         <figure>
-            <img src={findProduct.categoryImage.desktop} alt={findProduct.name}/>
-        </figure>
-        <div className='card__info'>
-            {findProduct.new && <div className='txtIntro'>New product</div>}
-            <h2>{findProduct.name}</h2>
-            <p>{findProduct.description}</p>
-            {!findProductId && <Button href={`/product/${findProduct.id}`}>See product</Button>   }
-                  
-        </div> 
+      <div className='content'>
+        <picture>
+              <source media="(max-width: 960px)" srcSet={findProduct.categoryImage.tablet} />
+              <img src={findProduct.categoryImage.desktop} alt={findProduct.name}/>
+          </picture>
+          <div className='card__info'>
+              {findProduct.new && <div className='txtIntro'>New product</div>}
+              <h2>{findProduct.name}</h2>
+              <p>{findProduct.description}</p>
+              {!findProductId && <Button href={`/product/${findProduct.id}`}>See product</Button>   }
+                    
+          </div> 
+      </div>
+    
     </CardProduct>
   )
 }

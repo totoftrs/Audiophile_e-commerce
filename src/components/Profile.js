@@ -62,7 +62,7 @@ function Profile() {
            <picture>
            <source
               media="(max-width: 962px)"
-              srcSet="./assets/shared/tablet/image-best-gear.jpg"
+              srcSet="/assets/shared/tablet/image-best-gear.jpg"
             />
               <img src="/assets/shared/desktop/image-best-gear.jpg" alt='best-gear'/>
            </picture>

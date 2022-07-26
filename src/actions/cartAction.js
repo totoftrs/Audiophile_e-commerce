@@ -1,3 +1,3 @@
-export const addToCart = (product, quantity) => async (dispatch) => {
+export const addToCart = (product, quantity) => (dispatch) => {
     dispatch({type: "addToCart", payload : {product, quantity}})
 }

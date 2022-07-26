@@ -11,73 +11,19 @@ import FeaturesIncludes from '../FeaturesIncludes';
 import Others from '../Others';
 
 const Wrapper = styled.section`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     max-width: 1110px;
     margin: 0 auto;
+    padding: 0 40px;
 
     .back{
-        position: relative;
-        left: -32rem;
-        padding: 2rem;
-        list-style: none;
-        text-decoration: none;
+        display: block;
+        margin-bottom: 2.6rem;
+        margin-top: 3.9rem;
         color: #979797;
+        text-decoration: none;
     }
-    .card{
-        padding-top: 0;
-    }
-    .container_includes{
-        display: flex;
-        justify-content: space-between;
-        gap: 8rem;
-        margin: 2rem 0;
+   
 
-        h2{
-            text-transform: uppercase;
-            padding: 2.5rem 0;
-        }
-        p{
-            color: #979797;
-        }
-    }
-    .features{
-        width: 60%;
-    }
-    .in_the_box{
-        width: 40%;
-
-        ul{
-            list-style: none;
-        }
-        span{
-            color: #979797;
-        }
-        span:first-child{
-            color: #D87D4A;
-            font-weight: 600;
-        }
-        span:nth-child(2){
-            padding: 0 1rem;
-        }
-    }
-    .gallery{
-        display: flex;
-        gap: 1rem;
-        margin: 4rem 0;
-
-        .bloc_1{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        picture{
-            border-radius: 20px;
-            overflow: hidden;
-        }
-    }
 `
 function Details() {
 

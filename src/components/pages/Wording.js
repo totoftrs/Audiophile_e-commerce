@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Wording = styled.div`
 width: 100%;
 background-color: #000;
+margin-bottom: 8rem;
 
 h1{
   font-size: 2.5rem;
@@ -22,4 +23,4 @@ function Title({title}) {
   )
 }
 
-export default Wording
+export default Title

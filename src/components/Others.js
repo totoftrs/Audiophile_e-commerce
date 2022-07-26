@@ -14,7 +14,10 @@ const Content = styled.main`
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    padding: 3rem 0 3rem 0rem;
+    padding: 0 40px;
+    @media (max-width: 960px){
+        gap: 1rem;
+    }
 
 h1{
     text-transform: uppercase;
@@ -27,22 +30,24 @@ h1{
     gap: 2rem;
 
     .also{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        text-align: center;
     }
     picture{
         width: 20rem;
+        @media (max-width: 960px){
+            width: 13rem;
+        }
 
         img{
             width: 100%;
+            padding-bottom: 2rem;
+
         }
     }
     h3{
         text-transform: uppercase;
         font-weight: 600;
-        padding: 2rem;
+        padding-bottom: 1.4rem;
         font-size: 1.5rem;
     }
 }
@@ -51,10 +56,10 @@ h1{
 const Button = styled.a`
     border: none;
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 1px;
-    padding: 1.5rem 3.5rem;
+    padding: 1rem 2rem;
     text-transform: uppercase;
     transition: .5s;
     text-decoration: none;
@@ -73,6 +78,7 @@ function Others({findProduct}) {
                        findProduct.others.map((other, index)=> (
                         <div key={index} className="also">
                             <picture>
+                                <source media="(max-width: 960px)" srcSet={other.image.tablet} />
                                 <img src={other.image.desktop} alt={other.slug}/>
                             </picture>
                             <h3>{other.name}</h3>

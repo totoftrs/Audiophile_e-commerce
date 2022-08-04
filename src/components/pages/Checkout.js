@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import Layout from '../Layout/Layout'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.section`
 display: flex;
@@ -222,7 +223,7 @@ function Checkout() {
         <Wrapper>
             <Content>
                 <button>
-                     <a href='/'>Go back</a>
+                     <Link to='/'>Go back</Link>
                 </button>  
                 <div className='container'>
                     <form className='checkout'>

@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import styled from 'styled-components';
 import Cart from '../../Cart';
+import { Link } from 'react-router-dom'
+
 
 const NavBar = styled.div`
     background-color: #000;
@@ -76,7 +78,7 @@ const NavbarContainer = styled.div`
       }
 
       ul {
-        display: grid;
+        display: none;
         position: absolute;
         grid-template-columns: auto;
         margin: 0;
@@ -91,6 +93,7 @@ const NavbarContainer = styled.div`
       }
 
       ul.active {
+        display: grid;
         height: 55vh;
         z-index: 99;
         transition: all 0.8s ease;
@@ -135,10 +138,9 @@ const NavbarMenu = styled.ul`
 `
 
 
-function Navbar() {
+function Navbar({checkout, setCheckout}) {
 
 const [open, setOpen] = useState(false)
-const [checkout, setCheckout] = useState(false)
 
 const toggle = () => {
   setOpen(!open)
@@ -146,8 +148,9 @@ const toggle = () => {
 
 const check = () => {
   setCheckout(!checkout)
+  console.log('ok', checkout)
 }
-
+console.log (checkout)
   return (
     <header>
        <NavBar>
@@ -158,22 +161,22 @@ const check = () => {
                   <span className="bar"></span>
                   <span className="bar"></span>
               </div>
-              <a href="/" id="navbar__logo">
+              <Link to="/" id="navbar__logo">
                 <img src="/assets/shared/desktop/logo.svg" alt="logo"/>
-              </a>
+              </Link>
           </div>
             <NavbarMenu className={open ? 'active' : ""}>
                 <li className="navbar__item">
-                    <a href="/" className="navbar__links">Home</a>
+                    <Link to="/" className="navbar__links">Home</Link>
                 </li>
                 <li className="navbar__item">
-                    <a href="/headphones" className="navbar__links">Headphones</a>
+                    <Link to="/headphones" className="navbar__links">Headphones</Link>
                 </li>
                 <li className="navbar__item">
-                    <a href="/speakers" className="navbar__links">Speakers</a>
+                    <Link to="/speakers" className="navbar__links">Speakers</Link>
                 </li>
                 <li className="navbar__item">
-                    <a href="/earphones" className="navbar__links">Earphones</a>
+                    <Link to="/earphones" className="navbar__links">Earphones</Link>
                 </li>
             </NavbarMenu>
             <div className="navbar__icon-card">

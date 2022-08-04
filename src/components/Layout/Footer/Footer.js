@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+
 
 const Wrapper = styled.section`
   display: flex;
@@ -101,21 +103,21 @@ function Footer() {
     <Wrapper>
         <FooterLayout>
           <NavbarContainer>
-            <a href="/" id="navbar__logo">
+            <Link to="/" id="navbar__logo">
                 <img src="/assets/shared/desktop/logo.svg" alt="logo"/>
-            </a>
+            </Link>
             <NavbarMenu>
                 <li className="navbar__item__footer">
-                    <a href="/" className="navbar__links">Home</a>
+                    <Link to="/" className="navbar__links">Home</Link>
                 </li>
                 <li className="navbar__item__footer">
-                    <a href="/headphones" className="navbar__links">Headphones</a>
+                    <Link to="/headphones" className="navbar__links">Headphones</Link>
                 </li>
                 <li className="navbar__item__footer">
-                    <a href="/speakers" className="navbar__links">Speakers</a>
+                    <Link to="/speakers" className="navbar__links">Speakers</Link>
                 </li>
                 <li className="navbar__item__footer">
-                    <a href="/earphones" className="navbar__links">Earphones</a>
+                    <Link to="/earphones" className="navbar__links">Earphones</Link>
                 </li>
             </NavbarMenu>
           </NavbarContainer>

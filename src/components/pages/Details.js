@@ -8,6 +8,7 @@ import Products from '../Products';
 import Profile from '../Profile';
 import Gallery from '../Gallery';
 import FeaturesIncludes from '../FeaturesIncludes';
+import { Link } from 'react-router-dom';
 import Others from '../Others';
 
 const Wrapper = styled.section`
@@ -42,7 +43,7 @@ function Details() {
     <>
     <Layout>
         <Wrapper>
-            <a href={`/${findProduct.category}`} className="back">Go Back</a>
+            <Link to={`/${findProduct.category}`} className="back">Go Back</Link>
             <Card formatMoney={formatMoney}/>   
             <FeaturesIncludes findProduct={findProduct} />
             <Gallery findProduct={findProduct} />

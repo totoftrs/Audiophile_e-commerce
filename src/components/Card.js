@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import data from '../data.json'
 import { addToCart } from '../actions/cartAction';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 const CardProduct = styled.div`
 
@@ -20,7 +21,10 @@ margin-bottom: 6rem;
 .card__two{
 flex-direction: row-reverse;
 }
-
+.content{
+  display: flex;
+  gap: 4rem;
+}
 .content .card__info{
   justify-content: center;
   align-items: center;
@@ -117,7 +121,7 @@ cursor: pointer;
 }
 `
 
-const Button = styled.a`
+const Button = styled(Link)`
 border: none;
 display: inline-block;
 font-size: 1rem;
@@ -191,7 +195,7 @@ function Card({title,formatMoney}) {
               {findProduct.new && <div className='txtIntro'>New product</div>}
               <h2>{findProduct.name}</h2>
               <p>{findProduct.description}</p>
-              {!findProductId && <Button href={`/product/${findProduct.id}`}>See product</Button>   }
+              {!findProductId && <Button to={`/product/${findProduct.id}`}>See product</Button>   }
                     
           </div> 
       </div>

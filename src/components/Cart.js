@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
-// import { useDispatch, useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 const CartContainer = styled.div`
     z-index: 5;
@@ -48,7 +48,8 @@ const CartContainer = styled.div`
 `
 function Cart() {
 
-    // const data = useSelector(state => state)
+    const data = useSelector(state => state)
+    console.log("data", data)
   return (
     <CartContainer>
         <div className='header'>
@@ -60,7 +61,7 @@ function Cart() {
             <p>total</p>
             <p className='price'>10</p>
         </div>
-        <a href='/checkout' className='checkout'>checkout</a>
+        <Link to='/checkout' className='checkout'>checkout</Link>
     </CartContainer>
   )
 }

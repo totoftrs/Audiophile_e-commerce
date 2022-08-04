@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 import Products from '../Products';
 import Profile from '../Profile';
+import { Link } from 'react-router-dom'
+
 
 const Hero = styled.section`
   display: flex;
@@ -63,7 +65,7 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #191919;
+  /* background-color: #191919; */
   max-width: 1190px;
   padding: 0 40px;
   margin: 0 auto;
@@ -204,7 +206,7 @@ const ContentHero = styled.main`
 display: flex;
 justify-content: center;
 align-items: center;
-background-color: #191919;
+/* background-color: #191919; */
 max-width: 1190px;
 padding: 0 40px;
 width: 100%;
@@ -255,13 +257,13 @@ function Home() {
         <div className='zx9-speaker-description'>
           <div className='title'> ZX9<br />speaker</div>
           <div className='txt'> Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</div>
-          <a href='/'>See product</a>
+          <Link to='/product/6'>See product</Link>
         </div>
       </Content>
       <Content className='zx7__speaker__container'>
         <div className='zx7-speaker-description'>
           <div className='title'> ZX7<br />speaker</div>
-          <a href='/' className='btn-zx7'>See product</a>
+          <Link to='/product/5' className='btn-zx7'>See product</Link>
         </div>
       </Content>
       <Content className='yx1__container'>
@@ -274,7 +276,7 @@ function Home() {
         </picture>
         <div className='yx1-earphones-description'>
           <div className='title'>Yx1 earphones</div>
-          <a href='/'>See product</a>
+          <Link to='/product/1'>See product</Link>
         </div>
       </Content>
     </Wrapper>

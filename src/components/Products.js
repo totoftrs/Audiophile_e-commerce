@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.section`
 margin: 0 auto;
@@ -74,30 +75,30 @@ function Products() {
                     <img src='/assets/shared/desktop/image-category-thumbnail-headphones.png' alt='headphones' className='imgProduct'/>
                 </figure>
                 <h3>Headphones</h3>
-                <a className='btn-shop' href='/headphones'>
+                <Link className='btn-shop' to='/headphones'>
                     <span>shop</span>
                     <img src='/assets/shared/desktop/icon-arrow-right.svg' alt='chevron-right'/>
-                </a>
+                </Link>
             </div>
             <div className='product'>
                 <figure>
                     <img src='/assets/shared/desktop/image-category-thumbnail-speakers.png' alt='speakers' className='imgProduct'/>
                 </figure>
                 <h3>Speakers</h3>
-                <a className='btn-shop' href='/headphones'>
+                <Link className='btn-shop' to='/headphones'>
                     <span>shop</span>
                     <img src='/assets/shared/desktop/icon-arrow-right.svg' alt='chevron-right'/>
-                </a>
+                </Link>
             </div>
             <div className='product'>
                 <figure>
                     <img src='/assets/shared/desktop/image-category-thumbnail-earphones.png' alt='earphones' className='imgProduct'/>
                 </figure>
                 <h3>Earphones</h3>
-                <a className='btn-shop' href='/earphones'>
+                <Link className='btn-shop' to='/earphones'>
                     <span>shop</span>
                     <img src='/assets/shared/desktop/icon-arrow-right.svg' alt='chevron-right'/>
-                </a>
+                </Link>
             </div>
         </Content>
     </Wrapper>

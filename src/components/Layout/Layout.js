@@ -1,14 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
+
 import Navbar from './Header/Navbar'
 import Footer from './Footer/Footer'
 
 function Layout(props) {
+  const [checkout, setCheckout] = useState(false)
 
 
   return (
     <div className='app__container'>
-        <Navbar />
-          <>{props.children}</>
+        <Navbar 
+        checkout={checkout}
+        setCheckout={setCheckout}/>
+          <div onClick={()=> setCheckout(false)}>
+            {props.children}
+            </div>
         <Footer />
     </div>
   )

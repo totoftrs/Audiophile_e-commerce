@@ -9,7 +9,7 @@ header{
   width: 100%;
   background-color: #000;
 }
-.underline{
+.navbar__underline{
   background-color:  #4C4C4C;
   width: 100%;
   max-width: 1110px;

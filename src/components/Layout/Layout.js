@@ -8,7 +8,7 @@ function Layout(props) {
 
 
   return (
-    <div className='app__container'>
+    <div className='layout__container'>
         <Navbar 
         checkout={checkout}
         setCheckout={setCheckout}/>

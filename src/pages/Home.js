@@ -14,8 +14,12 @@ const SectionHero = styled.section`
   margin: 0 auto;
 
   .hero__h1 {
-    font-size: 4rem;
+    font-size: min(5vw, 4rem);
     padding: 10px 0;
+    @media screen and (max-width: 768px) {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
   }
 
   .hero__para {
@@ -28,26 +32,30 @@ const SectionHero = styled.section`
     position: relative;
     display: flex;
     justify-content: center;
-    @media screen and (max-width: 960) {
+    @media screen and (max-width: 768px) {
       transform: translateX(0rem);
     }
   }
 
   img {
     width: 200%;
-    margin-right: 30rem;
+    margin-right: 25vw;
+    @media screen and (max-width: 768px) {
+      margin-right: 60vw;
+    }
   }
 
   .hero__infos {
     z-index: 1;
     color: #fff;
-    margin-right: 4rem;
+    padding: 20px 4rem 20px 0rem;
 
-    @media screen and (max-width: 960px) {
+    @media screen and (max-width: 768px) {
       position: absolute;
       margin: 0 auto;
       width: 30rem;
       text-align: center;
+      padding: 0;
     }
   }
 
@@ -89,7 +97,7 @@ const Wrapper = styled.section`
     flex-direction: row;
     margin-top: 5rem;
 
-    @media (max-width: 960px) {
+    @media (max-width: 768px) {
       flex-direction: column;
       align-items: center;
       text-align: center;
@@ -97,14 +105,23 @@ const Wrapper = styled.section`
   }
 
   .yx1__container {
+    height: 320px;
     grid-gap: 3rem;
     display: grid;
     gap: 3rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     background-color: #fff;
 
-    @media (max-width: 960px) {
+    @media (max-width: 768px) {
       flex: 1.1;
+      gap: 1rem;
+    }
+   
+    .yx1-image{
+      height: 320px;
+      img{
+        height: 100%;
+      }
     }
     img {
       height: auto;
@@ -139,6 +156,7 @@ const Wrapper = styled.section`
     color: #fff;
     max-width: 21.9rem;
     padding: 10rem 0;
+    padding-bottom: 3rem;
   }
 
   .zx7__description {
@@ -147,11 +165,14 @@ const Wrapper = styled.section`
 
   .yx1__description {
     background-color: #f1f1f1;
-    padding: 5.8rem 7rem;
-
-    @media (max-width: 960px) {
-      padding: 4rem 7rem;
+    height: 100%;
+    a{
+      margin-left: 30px;
     }
+  }
+  .yx1__title{
+    margin-top: 70px;
+    margin-left: 30px;
   }
 
   .zx9__title,
@@ -170,15 +191,18 @@ const Wrapper = styled.section`
   a {
     border: none;
     display: inline-block;
-    font-size: 1rem;
+    font-size: 0.8rem;
+    line-height: 48px;
     font-weight: 700;
     letter-spacing: 1px;
-    padding: 1.2rem 2.2rem;
+    height: 48px;
+    width: 160px;
     text-transform: uppercase;
     transition: 0.5s;
     background-color: #000;
     color: #fff;
     text-decoration: none;
+    text-align: center;
   }
 
   .zx7__btn {
@@ -209,16 +233,18 @@ const Content = styled.main`
 const Button = styled(Link)`
   border: none;
   display: inline-block;
-  font-size: 1.2rem;
+  width: 160px;
+  height: 48px;
+  font-size: 0.8rem;
+  line-height: 48px;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 1.5rem 3.5rem;
   text-transform: uppercase;
   transition: 0.5s;
   text-decoration: none;
-
+  text-align: center;
   color: #fff;
-  background-color: #d87d4a !important;
+  background-color: #d87d4a;
 `;
 function Home() {
   return (

@@ -10,15 +10,16 @@ const Wrapper = styled.section`
 `;
 
 const Content = styled.main`
-  gap: 3rem;
   width: 100%;
   margin: 0 auto;
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 7rem 0 7rem 0rem;
+  display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
 
-  @media (max-width: 960px) {
+  @media (max-width: 768px) {
+    display: flex;
     flex-direction: column-reverse;
   }
 
@@ -37,12 +38,19 @@ const Content = styled.main`
   }
   img {
     border-radius: 8px;
-    /* max-width: 100%; */
+    height: auto;
+    max-width: 100%;
   }
   .profile__description {
-    @media (max-width: 960px) {
+    max-width: 22rem;
+    @media (max-width: 768px) {
       text-align: center;
-      width: 80%;
+      max-width: 40rem;
+    }
+  }
+  .profile__picture{
+    @media (max-width: 768px) {
+      padding-bottom: 20px;
     }
   }
 `;
@@ -50,7 +58,7 @@ function Profile() {
   return (
     <Wrapper>
       <Content>
-        <div className="profil__description">
+        <div className="profile__description">
           <h2 className="profile__h2">
             Bringing you the <span>best</span> audio gear
           </h2>
@@ -65,7 +73,7 @@ function Profile() {
         </div>
         <picture className="profile__picture">
           <source
-            media="(max-width: 962px)"
+            media="(max-width: 768px)"
             srcSet="/assets/shared/tablet/image-best-gear.jpg"
           />
           <img

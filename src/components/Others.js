@@ -67,7 +67,7 @@ const Button = styled(Link)`
   background-color: #d87d4a;
 `;
 function Others({ findProduct }) {
-  console.log (findProduct)
+  // console.log (findProduct)
   return (
     <Wrapper>
       <Content>

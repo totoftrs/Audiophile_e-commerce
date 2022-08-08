@@ -15,8 +15,12 @@ const Content = styled.main`
   width: 100%;
   padding: 0 40px;
 
-  .card:nth-child(2) .content {
+  .card:nth-child(2) .card__content {
     flex-direction: row-reverse;
+    @media (max-width: 768px) {
+      max-width: 100%;
+      flex-direction: column;
+    }
   }
 `;
 const Wrapper = styled.section`

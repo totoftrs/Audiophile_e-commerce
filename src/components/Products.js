@@ -48,6 +48,12 @@ const Content = styled.main`
   }
   .products__figure {
     transform: translateY(50px);
+    @media (max-width: 960px) {
+      transform: translateY(10px);
+    }
+    @media (max-width: 689px) {
+      transform: translateY(0px);
+    }
   }
   .products__h3 {
     text-transform: uppercase;

@@ -144,7 +144,6 @@ function Navbar({ checkout, setCheckout }) {
   const check = () => {
     setCheckout(!checkout);
   };
-  console.log(checkout);
   return (
     <header>
       <NavBar>

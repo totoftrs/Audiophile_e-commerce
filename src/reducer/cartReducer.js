@@ -3,7 +3,7 @@ export const cartReducer = (state = {cart:[]}, action) => {
         case 'addToCart' : 
             console.log(action.payload);
             const { product, quantity } = action.payload
-            console.log(product)
+            // console.log(product)
             const findId = state.find(elem => elem.id == product.id)
             if(findId){
                 const deleteProduct = state.filter(elem => elem.id !== product.id)

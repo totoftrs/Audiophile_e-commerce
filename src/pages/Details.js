@@ -31,7 +31,7 @@ function Details() {
   const formatMoney = (n) => {
     const lengthPrice = `${n}`.length;
     if (lengthPrice === 4) {
-      return "$ " + (n / 1000).toFixed(3);
+      return (n / 1000).toFixed(3);
     }
     return n;
   };

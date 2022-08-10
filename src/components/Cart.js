@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { decrement } from "../actions/decrementAction";
+import { increment } from "../actions/incrementAction";
+import { emptyCart } from "../actions/emptyCartAction";
 
 const CartContainer = styled.div`
   z-index: 5;
@@ -9,8 +13,8 @@ const CartContainer = styled.div`
   border-radius: 8px;
   padding: 2rem;
   position: absolute;
-  right: 6em;
-  top: 15%;
+  right: 5%;
+  top: 10%;
   width: 377px;
 
   button {
@@ -51,7 +55,7 @@ const CartContainer = styled.div`
     right: 0;
     margin: 0 auto;
   }
-  .cart__footer__para{
+  .cart__footer__para {
     text-transform: uppercase;
     color: #979797;
   }
@@ -59,7 +63,7 @@ const CartContainer = styled.div`
     font-weight: bold;
     font-size: 1.2rem;
   }
-  .cart__container{
+  .cart__container {
     margin-bottom: 40px;
   }
   .cart__content {
@@ -101,56 +105,85 @@ const CartContainer = styled.div`
     color: #000;
     font-weight: bold;
   }
+  .cart__button {
+    cursor: pointer;
+  }
   .cart__button__select button {
     border: none;
     background-color: transparent;
     cursor: pointer;
     text-decoration: none;
+    height: 20px;
+    width: 20px;
   }
 `;
 function Cart() {
+  const dispatch = useDispatch();
+
   const cart = useSelector((state) => state.cart);
-  console.log("-----", cart);
-  // const [increment, setIncrement] = useState(cart.quantity);
+  const lessQty = (params) => {
+    dispatch(decrement(params));
+  };
+  const moreQty = (params) => {
+    dispatch(increment(params));
+  };
+  const removeCart = (params) => {
+    dispatch(emptyCart(params));
+  };
+  let total = 0;
+  for (var n of cart) {
+    total += n.price * n.quantity;
+  }
 
   return (
     <CartContainer>
-      <div className="cart__header">
-        <p className="cart__header__para">Cart ({cart.length})</p>
-        <button className="cart__button">Remove all</button>
-      </div>
-      <div className="cart__container">
-        {cart.map((elem) => {
-     
-        var str=elem.name.split(' ');
-        var lastword=str.pop();
-          return (
-            <div className="cart__content" key={elem.id}>
-              <div className="cart__infos">
-                <img src={elem.image} alt={elem.name} />
-                <div>
-                  <div className="cart__name">{str.join(' ')}</div>
-                  <div className="cart__priceElem">$ {elem.price}</div>
+        <div className="cart__header">
+          <p className="cart__header__para">Cart ({cart.length})</p>
+          <button className="cart__button" onClick={() => removeCart(cart)}>
+            Remove all
+          </button>
+        </div>
+        <div className="cart__container">
+          {cart.map((elem) => {
+            var shortName = elem.name.split(" ");
+            shortName.pop();
+            return (
+              <div className="cart__content" key={elem.id}>
+                <div className="cart__infos">
+                  <img src={elem.image} alt={elem.name} />
+                  <div>
+                    <div className="cart__name">{shortName.join(" ")}</div>
+                    <div className="cart__priceElem">$ {elem.price}</div>
+                  </div>
+                </div>
+                <div className="cart__button__container">
+                  <div className="cart__button__select">
+                    <button
+                      className="cart__button__less"
+                      onClick={() => lessQty(elem)}
+                    >
+                      -
+                    </button>
+                    <p className="cart__button__para">{elem.quantity}</p>
+                    <button
+                      className="cart__button__more"
+                      onClick={() => moreQty(elem)}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div className="cart__button__container">
-                <div className="cart__button__select">
-                  <button className="cart__button__less">-</button>
-                  <p className="cart__button__para">{elem.quantity}</p>
-                  <button className="cart__button__more">+</button>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div className="cart__footer">
-        <p className="cart__footer__para">total</p>
-        <p className="cart__footer__priceTotal">$ 10</p>
-      </div>
-      <Link to="/checkout" className="cart__footer__checkout">
-        checkout
-      </Link>
+            );
+          })}
+        </div>
+        <div className="cart__footer">
+          <p className="cart__footer__para">total</p>
+          <p className="cart__footer__priceTotal">$ {total}</p>
+        </div>
+        <Link to="/checkout" className="cart__footer__checkout">
+          checkout
+        </Link>
     </CartContainer>
   );
 }

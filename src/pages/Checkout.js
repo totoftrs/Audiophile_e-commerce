@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout/Layout";
 import { Link } from "react-router-dom";
+import Summary from "../components/Summary";
 
 const Wrapper = styled.section`
   display: flex;
@@ -9,20 +10,6 @@ const Wrapper = styled.section`
   justify-content: center;
   flex-direction: column;
   background: #f2f2f2;
-`;
-const Button = styled(Link)`
-  border: none;
-  display: inline-block !important;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: rem 2.5rem !important;
-  text-transform: uppercase;
-  transition: 0.5s;
-  text-decoration: none;
-
-  color: #fff !important;
-  background-color: #d87d4a !important;
 `;
 
 const Content = styled.main`
@@ -43,11 +30,22 @@ const Content = styled.main`
     color: #000;
     text-decoration: none;
   }
-  .container {
+  .checkout__container {
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
+    width: 100%;
     padding-bottom: 6rem;
+
+    @media (max-width: 768px){
+      flex-direction: column;
+    }
+  }
+  .summary{
+    @media (max-width: 768px){
+      width: 100%;
+      margin: 0;
+      margin-top: 20px;
+    }
   }
   h1 {
     font-size: 2rem;
@@ -64,8 +62,7 @@ const Content = styled.main`
     color: #d87d4a;
     text-transform: uppercase;
   }
-  .checkout {
-    max-width: 730px;
+  .checkout__form {
     padding: 2rem;
     background-color: #fff;
     border-radius: 10px;
@@ -75,16 +72,16 @@ const Content = styled.main`
       font-size: 0.8rem;
     }
   }
-  .checkout-details {
+  .checkout__details {
     gap: 1rem;
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 3rem;
     justify-content: space-between;
-    .checkout-input {
+    .checkout__input {
       display: flex;
       flex-direction: column;
-      width: 20rem;
+      width: 47%;
     }
     label {
       padding-bottom: 0.5rem;
@@ -98,19 +95,19 @@ const Content = styled.main`
       padding: 1rem 1.4rem;
     }
   }
-  .checkout-info {
+  .checkout__info{
     gap: 1rem;
     justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 3rem;
-    .checkout-input:first-child {
+    .checkout__input:first-child {
       width: 100%;
     }
-    .checkout-input {
+    .checkout__input {
       display: flex;
       flex-direction: column;
-      width: 20rem;
+      width: 47%;
     }
     label {
       padding-bottom: 0.5rem;
@@ -125,7 +122,7 @@ const Content = styled.main`
     }
   }
 
-  .checkout-payment {
+  .checkout__payment {
     gap: 1rem;
     justify-content: space-between;
     display: flex;
@@ -136,13 +133,13 @@ const Content = styled.main`
       display: flex;
       justify-content: space-between;
     }
-    .checkout-input {
+    .checkout__input {
       display: flex;
       flex-direction: column;
-      width: 20rem;
+      width: 47%;
     }
     label {
-      padding-bottom: 0.5rem;
+      padding-bottom: -0.5rem;
       font-weight: 700;
       font-size: 0.8rem;
     }
@@ -154,7 +151,7 @@ const Content = styled.main`
     }
 
     .container-radio {
-      width: 20rem;
+      width: 47%;
     }
     .checkout__method {
       display: flex;
@@ -163,7 +160,7 @@ const Content = styled.main`
       border: 1px solid #cfcfcf;
       border-radius: 8px;
       padding: 1rem 1.4rem;
-      width: 20rem;
+      width: 100%;
       margin-bottom: 1.6rem;
     }
     .checkout__method:focus-within {
@@ -203,17 +200,12 @@ const Content = styled.main`
       border: 2px solid #cfcfcf;
     }
 
-    .cart {
+    .checkout__cart {
       display: flex;
       gap: 1rem;
     }
   }
-  .summary {
-    padding: 2rem;
-    background-color: #fff;
-    max-width: 350px;
-    border-radius: 10px;
-  }
+
 `;
 
 function Checkout() {
@@ -225,45 +217,45 @@ function Checkout() {
           <button>
             <Link to="/">Go back</Link>
           </button>
-          <div className="container">
-            <form className="checkout">
+          <form className="checkout__container">
+            <div className="checkout__form">
               <h1>Checkout</h1>
               <h3>Billing details</h3>
-              <div className="checkout-details">
-                <div className="checkout-input">
+              <div className="checkout__details">
+                <div className="checkout__input">
                   <label>Name</label>
-                  <input type="text" placeholder="Alexei Ward" />
+                  <input type="text" placeholder="Alexei Ward" required/>
                 </div>
-                <div className="checkout-input">
+                <div className="checkout__input">
                   <label>Email Address</label>
-                  <input type="text" placeholder="Alexei@mail.com" />
+                  <input type="email" placeholder="Alexei@mail.com" required/>
                 </div>
-                <div className="checkout-input">
+                <div className="checkout__input">
                   <label>Phone Number</label>
-                  <input type="text" placeholder="+1 202-555-0136" />
+                  <input type="number" placeholder="+1 202-555-0136" required/>
                 </div>
               </div>
               <h3>shipping details</h3>
-              <div className="checkout-info">
-                <div className="checkout-input">
+              <div className="checkout__info">
+                <div className="checkout__input">
                   <label>Address</label>
-                  <input type="text" placeholder="1137 Williams Avenue" />
+                  <input type="text" placeholder="1137 Williams Avenue" required/>
                 </div>
-                <div className="checkout-input">
+                <div className="checkout__input">
                   <label>ZipCode</label>
-                  <input type="text" placeholder="10001" />
+                  <input type="text" placeholder="10001" required/>
                 </div>
-                <div className="checkout-input">
+                <div className="checkout__input">
                   <label>City</label>
-                  <input type="text" placeholder="New York" />
+                  <input type="text" placeholder="New York" required/>
                 </div>
-                <div className="checkout-input">
+                <div className="checkout__input">
                   <label>Country</label>
-                  <input type="text" placeholder="United States" />
+                  <input type="text" placeholder="United States" required/>
                 </div>
               </div>
               <h3>Payment details</h3>
-              <div className="checkout-payment">
+              <div className="checkout__payment">
                 <div className="method-container">
                   <p>Payment Method</p>
 
@@ -296,23 +288,20 @@ function Checkout() {
                     </div>
                   </div>
                 </div>
-                <div className="cart">
-                  <div className="checkout-input">
+                <div className="checkout__cart">
+                  <div className="checkout__input">
                     <label>e-Money Number</label>
                     <input type="text" placeholder="238521993" />
                   </div>
-                  <div className="checkout-input">
+                  <div className="checkout__input">
                     <label>e-Money Number PIN</label>
                     <input type="text" placeholder="6891" />
                   </div>
                 </div>
               </div>
-            </form>
-            <div className="summary">
-              <h2>Summary</h2>
-              <Button to="/">Continue & pay</Button>
             </div>
-          </div>
+            <Summary />
+          </form>
         </Content>
       </Wrapper>
     </Layout>

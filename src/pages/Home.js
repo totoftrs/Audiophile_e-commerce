@@ -157,10 +157,17 @@ const Wrapper = styled.section`
     max-width: 21.9rem;
     padding: 10rem 0;
     padding-bottom: 3rem;
+    a:hover{
+      background-color: #4c4c4c;
+    }
   }
 
   .zx7__description {
     padding: 4rem;
+    a:hover{
+      background: black;
+      color: white;
+    }
   }
 
   .yx1__description {
@@ -168,6 +175,10 @@ const Wrapper = styled.section`
     height: 100%;
     a{
       margin-left: 30px;
+    }
+    a:hover{
+      background: black;
+      color: white;
     }
   }
   .yx1__title{
@@ -245,6 +256,10 @@ const Button = styled(Link)`
   text-align: center;
   color: #fff;
   background-color: #d87d4a;
+
+  &:hover{
+    background-color: #fbaf85;
+  }
 `;
 function Home() {
   return (

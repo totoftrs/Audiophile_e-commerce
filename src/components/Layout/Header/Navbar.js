@@ -92,7 +92,7 @@ const NavbarContainer = styled.div`
 
     ul.active {
       display: grid;
-      height: 55vh;
+      height: 30vh;
       z-index: 99;
       transition: all 0.8s ease;
       opacity: 1;

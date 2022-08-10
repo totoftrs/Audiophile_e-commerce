@@ -53,12 +53,11 @@ const CardProduct = styled.div`
     color: #000;
     gap: 1rem;
 
-    @media (max-width: 960px) {
+    @media (max-width: 768px) {
       text-align: center;
       max-width: 100%;
       align-items: center;
     }
-    
   }
 
   .card__txtIntro {
@@ -85,24 +84,7 @@ const CardProduct = styled.div`
     font-size: 1.3rem;
     padding-bottom: 2rem;
   }
-  .card__addToCart {
-    background: #d87d4a;
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    display: inline-block;
-    width: 160px;
-    height: 48px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    -webkit-letter-spacing: 1px;
-    -moz-letter-spacing: 1px;
-    -ms-letter-spacing: 1px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-  }
+
   .card__button__container {
     display: flex;
     gap: 2rem;
@@ -138,9 +120,6 @@ const CardProductId = styled.div`
   justify-content: space-between;
   margin-bottom: 6rem;
 
-  @media (max-width: 768px) {
-    gap: 5rem;
-  }
   .card__two {
     flex-direction: row-reverse;
   }
@@ -181,7 +160,6 @@ const CardProductId = styled.div`
       max-width: 48%;
       align-items: left;
     }
-    
   }
 
   .card__txtIntro {
@@ -227,6 +205,9 @@ const CardProductId = styled.div`
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
+  .card__addToCart:hover {
+    background: #fbaf85;
+  }
   .card__button__container {
     display: flex;
     gap: 2rem;
@@ -250,6 +231,8 @@ const CardProductId = styled.div`
     border: none;
     background-color: transparent;
     cursor: pointer;
+    height: 30px;
+    width: 30px;
   }
 `;
 
@@ -268,6 +251,10 @@ const Button = styled(Link)`
   text-align: center;
   color: #fff;
   background-color: #d87d4a;
+
+  &:hover{
+    background-color: #fbaf85;
+  }
 `;
 
 function Card({ title, formatMoney }) {
@@ -310,7 +297,7 @@ function Card({ title, formatMoney }) {
           )}
           <h2 className="card__h2">{findProductId.name}</h2>
           <p className="card__para">{findProductId.description}</p>
-          <div className="card__price"> {formatMoney(findProductId.price)}</div>
+          <div className="card__price">$ {formatMoney(findProductId.price)}</div>
           <div className="card__button__container">
             <div className="card__button__select">
               <button onClick={decrement}>-</button>
@@ -318,7 +305,7 @@ function Card({ title, formatMoney }) {
               <button onClick={increment}>+</button>
             </div>
             <button
-              className="card__addToCart"
+              className="card__addToCart btn"
               onClick={() => addTo(findProductId, count)}
             >
               add to card

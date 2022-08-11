@@ -111,7 +111,7 @@ function Summary() {
       <div className="summary__container">
         {cart.map((product) => {
           const name = product.name.split(" ");
-          const pop = name.pop();
+          name.pop();
           const shortName = name.join(" ");
 
           return (

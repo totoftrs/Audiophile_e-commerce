@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { decrement } from "../actions/decrementAction";
 import { increment } from "../actions/incrementAction";
 import { emptyCart } from "../actions/emptyCartAction";
+import Modal from "@mui/material/Modal";
 
 const CartContainer = styled.div`
   z-index: 5;
@@ -117,7 +119,10 @@ const CartContainer = styled.div`
     width: 20px;
   }
 `;
-function Cart() {
+function Cart({ openModal, setOpenModal }) {
+  const handleClose = () => {
+    setOpenModal(false);
+  };
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -136,55 +141,64 @@ function Cart() {
   }
 
   return (
-    <CartContainer>
-        <div className="cart__header">
-          <p className="cart__header__para">Cart ({cart.length})</p>
-          <button className="cart__button" onClick={() => removeCart(cart)}>
-            Remove all
-          </button>
-        </div>
-        <div className="cart__container">
-          {cart.map((elem) => {
-            var shortName = elem.name.split(" ");
-            shortName.pop();
-            return (
-              <div className="cart__content" key={elem.id}>
-                <div className="cart__infos">
-                  <img src={elem.image} alt={elem.name} />
-                  <div>
-                    <div className="cart__name">{shortName.join(" ")}</div>
-                    <div className="cart__priceElem">$ {elem.price}</div>
+    <>
+      <Modal
+        open={openModal}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <CartContainer>
+          <div className="cart__header">
+            <p className="cart__header__para">Cart ({cart.length})</p>
+            <button className="cart__button" onClick={() => removeCart(cart)}>
+              Remove all
+            </button>
+          </div>
+          <div className="cart__container">
+            {cart.map((elem) => {
+              var shortName = elem.name.split(" ");
+              shortName.pop();
+              return (
+                <div className="cart__content" key={elem.id}>
+                  <div className="cart__infos">
+                    <img src={elem.image} alt={elem.name} />
+                    <div>
+                      <div className="cart__name">{shortName.join(" ")}</div>
+                      <div className="cart__priceElem">$ {elem.price}</div>
+                    </div>
+                  </div>
+                  <div className="cart__button__container">
+                    <div className="cart__button__select">
+                      <button
+                        className="cart__button__less"
+                        onClick={() => lessQty(elem)}
+                      >
+                        -
+                      </button>
+                      <p className="cart__button__para">{elem.quantity}</p>
+                      <button
+                        className="cart__button__more"
+                        onClick={() => moreQty(elem)}
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div className="cart__button__container">
-                  <div className="cart__button__select">
-                    <button
-                      className="cart__button__less"
-                      onClick={() => lessQty(elem)}
-                    >
-                      -
-                    </button>
-                    <p className="cart__button__para">{elem.quantity}</p>
-                    <button
-                      className="cart__button__more"
-                      onClick={() => moreQty(elem)}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="cart__footer">
-          <p className="cart__footer__para">total</p>
-          <p className="cart__footer__priceTotal">$ {total}</p>
-        </div>
-        <Link to="/checkout" className="cart__footer__checkout">
-          checkout
-        </Link>
-    </CartContainer>
+              );
+            })}
+          </div>
+          <div className="cart__footer">
+            <p className="cart__footer__para">total</p>
+            <p className="cart__footer__priceTotal">$ {total}</p>
+          </div>
+          <Link to="/checkout" className="cart__footer__checkout">
+            checkout
+          </Link>
+        </CartContainer>
+      </Modal>
+    </>
   );
 }
 

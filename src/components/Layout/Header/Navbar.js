@@ -136,14 +136,15 @@ const NavbarMenu = styled.ul`
 
 function Navbar({ checkout, setCheckout }) {
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
+  const handleOpen = () => {
+    setOpenModal(!openModal);
+  };
   const toggle = () => {
     setOpen(!open);
   };
 
-  const check = () => {
-    setCheckout(!checkout);
-  };
   return (
     <header>
       <NavBar>
@@ -181,14 +182,14 @@ function Navbar({ checkout, setCheckout }) {
             </li>
           </NavbarMenu>
           <div className="navbar__icon-card">
-            <button className="navbar__button" onClick={check}>
+            <button className="navbar__button" onClick={handleOpen}>
               <img src="/assets/shared/desktop/icon-cart.svg" alt="icon-cart" />
             </button>
           </div>
         </NavbarContainer>
       </NavBar>
       <div className="navbar__underline"></div>
-      {checkout && <Cart checkout={checkout} />}
+      {openModal && <Cart openModal={openModal} setOpenModal={setOpenModal} />}
     </header>
   );
 }

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Layout from "../components/Layout/Layout";
 import { Link } from "react-router-dom";
 import Summary from "../components/Summary";
+import Confirmation from "../components/Confirmation"
 
 const Wrapper = styled.section`
   display: flex;
@@ -209,6 +210,27 @@ const Content = styled.main`
 `;
 
 function Checkout() {
+  const [openModal, setOpenModal] = useState(false);
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setOpenModal(!openModal);
+
+    const [ 
+      name, 
+      email, 
+      phone, 
+      address, 
+      zipcode, 
+      city, 
+      country,
+      emoney,
+      cash,
+      number,
+      numberPin
+   ] = e.target
+  }
   const [paymentMethod, setPaymentMethod] = useState("emoney");
   return (
     <Layout>
@@ -217,7 +239,7 @@ function Checkout() {
           <button>
             <Link to="/">Go back</Link>
           </button>
-          <form className="checkout__container">
+          <form className="checkout__container" onSubmit={handleSubmit}>
             <div className="checkout__form">
               <h1>Checkout</h1>
               <h3>Billing details</h3>
@@ -304,6 +326,7 @@ function Checkout() {
           </form>
         </Content>
       </Wrapper>
+      { openModal && <Confirmation setOpenModal={setOpenModal} openModal={openModal}/>}
     </Layout>
   );
 }

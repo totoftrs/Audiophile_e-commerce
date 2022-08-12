@@ -3,37 +3,51 @@ export const cartReducer = (state = { cart: [] }, action) => {
     case "addToCart":
       console.log(action.payload);
       const { product, quantity } = action.payload;
-      const findId = state.find((elem) => elem.id === product.id);
+      const findId = state.cart.find((elem) => elem.id === product.id);
       if (findId) {
-        const deleteProduct = state.filter((elem) => elem.id !== product.id);
-        return [...deleteProduct, { ...findId, quantity: quantity }];
-      } else {
-        return [
+        const deleteProduct = state.cart.filter(
+          (elem) => elem.id !== product.id
+        );
+        return {
           ...state,
-          {
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            quantity: quantity,
-            image: product.image.desktop,
-          },
-        ];
+          cart: [...deleteProduct, { ...findId, quantity: quantity }],
+        };
+      } else {
+        return {
+          ...state,
+          cart: [
+            ...state.cart,
+            {
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              quantity: quantity,
+              image: product.image.desktop,
+            },
+          ],
+        };
       }
     case "decrement":
-      const find = state.find((elem) => elem.id === action.payload.id);
-      if(find.quantity <= 1){
-        find.quantity = 1
+      const find = state.cart.find((elem) => elem.id === action.payload.id);
+      if (find.quantity < 2) {
+        return {
+          ...state,
+          cart: [...state.cart.filter((elem) => elem.id !== find.id)],
+        };
       }
       find.quantity -= 1;
-      return [...state];
+      return { ...state, cart: [...state.cart] };
 
     case "increment":
-      const findProduct = state.find((elem) => elem.id === action.payload.id);
+      const findProduct = state.cart.find(
+        (elem) => elem.id === action.payload.id
+      );
       findProduct.quantity += 1;
-      return [...state];
 
-      case "emptyCart":
-      return [];
+      return { ...state, cart: [...state.cart] };
+
+    case "emptyCart":
+      return { ...state, cart: [] };
 
     default:
       return state;

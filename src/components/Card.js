@@ -87,7 +87,6 @@ const CardProduct = styled.div`
 
   .card__button__container {
     display: flex;
-    gap: 2rem;
     justify-content: space-between;
   }
   .card__button__select {
@@ -99,6 +98,7 @@ const CardProduct = styled.div`
     align-items: center;
     background-color: #f1f1f1;
     cursor: pointer;
+    margin-right: 10px;
   }
   .card__button__select p {
     padding: 0;
@@ -210,7 +210,6 @@ const CardProductId = styled.div`
   }
   .card__button__container {
     display: flex;
-    gap: 2rem;
     justify-content: space-between;
   }
   .card__button__select {
@@ -222,6 +221,7 @@ const CardProductId = styled.div`
     align-items: center;
     background-color: #f1f1f1;
     cursor: pointer;
+    margin-right: 10px;
   }
   .card__button__select p {
     padding: 0;

@@ -29,7 +29,7 @@ export const cartReducer = (state = { cart: [] }, action) => {
       }
     case "decrement":
       const find = state.cart.find((elem) => elem.id === action.payload.id);
-      if (find.quantity < 2) {
+      if (find.quantity === 1) {
         return {
           ...state,
           cart: [...state.cart.filter((elem) => elem.id !== find.id)],

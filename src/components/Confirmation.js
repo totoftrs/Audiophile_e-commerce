@@ -1,8 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Modal from "@mui/material/Modal";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { emptyCart } from "../actions/emptyCartAction";
 
 const ConfirmationContainer = styled.div`
   position: absolute;
@@ -102,8 +103,13 @@ const ConfirmationContainer = styled.div`
   }
 `;
 
-function Confirmation({ openModal, setOpenModal }) {
+function Confirmation({ openModal, setOpenModal, grandTotal }) {
   const product = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const removeCart = (params) => {
+    dispatch(emptyCart(params));
+  };
   console.log(product[0]);
   const handleClose = () => {
     setOpenModal(false);
@@ -149,12 +155,12 @@ function Confirmation({ openModal, setOpenModal }) {
               </div>
               <div className="confirmation__grandTotal">
                 <p>grand total</p>
-                <div>$ 1200</div>
+                <div>$ {grandTotal}</div>
               </div>
             </div>
           </div>
 
-          <Link to="/" className="confirmation__button">
+          <Link to='/' onClick={() => removeCart(product)} className="confirmation__button">
             Back to home
           </Link>
         </ConfirmationContainer>

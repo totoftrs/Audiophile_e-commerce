@@ -13,14 +13,20 @@ const Wrapper = styled.div`
   }
   .summary__btn {
     padding: 0;
+    font-size: 14px;
     width: 24.3vw;
     height: 48px;
     line-height: 48px;
+    font-weight: bold;
     text-align: center;
 
     @media (max-width: 768px) {
       width: 100%;
     }
+  }
+  .summary__btn:disabled, .summary__btn[disabled]{
+    background-color: gray !important;
+    color: rgba(16, 16, 16, 0.3) !important;
   }
   .summary__content {
     padding-bottom: 20px;
@@ -77,34 +83,11 @@ const Wrapper = styled.div`
     color: #fff !important;
     background-color: #d87d4a !important;
   }
+
 `;
 
-function Summary() {
+function Summary({ total, shipping, vat, grandTotal, formatMoney }) {
   const cart = useSelector((state) => state.cart);
-
-  let total = 0;
-  let shipping = 50;
-  let vat = 1079;
-  let grandTotal = 0;
-
-  for (var n of cart) {
-    total += n.price * n.quantity;
-  }
-
-  const formatMoney = (n) => {
-    const lengthPrice = `${n}`.length;
-    if (lengthPrice === 4) {
-      return (n / 1000).toFixed(3);
-    }
-    return n;
-  };
-
-  if (total == 0) {
-    grandTotal = 0;
-  } else {
-    grandTotal = formatMoney(total + shipping);
-  }
-
   return (
     <Wrapper className="summary">
       <h2>Summary</h2>
@@ -139,11 +122,13 @@ function Summary() {
         </div>
         <div className="summary__container__detail">
           <div className="summary__txt">SHIPPING</div>
-          <div className="summary__shipping price">$ {shipping}</div>
+          <div className="summary__shipping price">
+            $ {total > 0 ? shipping : "0"}
+          </div>
         </div>
         <div className="summary__container__detail">
           <div className="summary__txt">VAT (INCLUDED)</div>
-          <div className="summary__vat price">$ {formatMoney(vat)}</div>
+          <div className="summary__vat price">$ {total > 0 ? formatMoney(vat) : "0"}</div>
         </div>
         <div className="summary__container__grandTotal">
           <div className="summary__txt"> GRAND TOTAL</div>
@@ -151,7 +136,7 @@ function Summary() {
         </div>
       </div>
 
-      <button className="summary__btn" type="submit">
+      <button className="summary__btn" type="submit" disabled={total == 0}>
         Continue & pay
       </button>
     </Wrapper>

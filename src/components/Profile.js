@@ -72,12 +72,17 @@ function Profile() {
           </p>
         </div>
         <picture className="profile__picture">
+        <source
+            media="(max-width: 375px)"
+            srcSet="./assets/shared/mobile/image-best-gear.jpg"
+          />
           <source
             media="(max-width: 768px)"
-            srcSet="/assets/shared/tablet/image-best-gear.jpg"
+            srcSet="./assets/shared/tablet/image-best-gear.jpg"
           />
+       
           <img
-            src="/assets/shared/desktop/image-best-gear.jpg"
+            src="./assets/shared/desktop/image-best-gear.jpg"
             alt="best-gear"
           />
         </picture>

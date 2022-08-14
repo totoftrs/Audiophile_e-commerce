@@ -13,19 +13,34 @@ const SectionHero = styled.section`
   width: 100%;
   margin: 0 auto;
 
+  @media screen and (max-width: 375px) {
+    height: 520px;
+  }
+
   .hero__h1 {
+    text-transform: uppercase;
     font-size: min(5vw, 4rem);
+    line-height: 1;
     padding: 10px 0;
     @media screen and (max-width: 768px) {
-      font-size: 4rem;
-      line-height: 4rem;
+      font-size: 7vw;
+    }
+    @media screen and (max-width: 375px) {
+      font-size: 11vw;
     }
   }
 
   .hero__para {
     font-size: 1rem;
     padding: 10px 0;
-    color: #4c4c4c;
+    color: #ccc;
+
+    @media screen and (max-width: 768px) {
+      font-size: 2.5vw;
+    }
+    @media screen and (max-width: 375px) {
+      font-size: 3.5vw;
+    }
   }
 
   .hero__figure {
@@ -39,9 +54,14 @@ const SectionHero = styled.section`
 
   img {
     width: 200%;
-    margin-right: 25vw;
+    margin-right: 17vw;
     @media screen and (max-width: 768px) {
       margin-right: 60vw;
+    }
+    @media screen and (max-width: 375px) {
+      transform: translateY(-42px);
+      margin-right: 108vw;
+      width: 310vw;
     }
   }
 
@@ -53,9 +73,12 @@ const SectionHero = styled.section`
     @media screen and (max-width: 768px) {
       position: absolute;
       margin: 0 auto;
-      width: 30rem;
+      width: 60%;
       text-align: center;
       padding: 0;
+    }
+    @media screen and (max-width: 375px) {
+      width: 80%;
     }
   }
 
@@ -63,6 +86,9 @@ const SectionHero = styled.section`
     color: #4c4c4c;
     text-transform: uppercase;
     letter-spacing: 8px;
+  }
+  .hero__button {
+    margin: 15px 0;
   }
 `;
 const ContentHero = styled.main`
@@ -82,6 +108,14 @@ const Wrapper = styled.section`
   padding: 0 40px;
   margin: 0 auto;
 
+  .zx9__title,
+  .zx7__title,
+  .yx1__title {
+    text-transform: uppercase;
+    font-size: max(2rem, 1.4vw);
+    line-height: 1;
+    margin-bottom: 1.6rem;
+  }
   .speaker__container {
     background-color: #d87d4a;
     background-image: url("./assets/home/desktop/pattern-circles.svg");
@@ -104,41 +138,43 @@ const Wrapper = styled.section`
     }
   }
 
-  .yx1__container {
-    height: 320px;
-    grid-gap: 3rem;
-    display: grid;
-    gap: 3rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    background-color: #fff;
-
-    @media (max-width: 768px) {
-      flex: 1.1;
-      gap: 1rem;
-    }
-   
-    .yx1-image{
-      height: 320px;
-      img{
-        height: 100%;
-      }
-    }
-    img {
-      height: auto;
-      width: 100%;
-      border-radius: 8px;
-    }
-    .yx1__title {
-      font-size: 2rem;
-    }
-
-    a {
-      background-color: transparent;
-      border: 1px solid #000;
-      color: #000;
-    }
+  img {
+    height: auto;
+    width: 100%;
+    border-radius: 8px;
+  }
+  .yx1__title {
+    font-size: max(2rem, 1.4vw);
   }
 
+  a {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+  }
+
+  .zx9__description {
+    color: #fff;
+    max-width: 21.9rem;
+    padding: 10rem 0;
+    padding-bottom: 3rem;
+    a:hover {
+      background-color: #4c4c4c;
+    }
+  }
+  .zx9__picture {
+    max-width: 24rem;
+    transform: translateY(78px);
+
+    img {
+      max-width: 18rem;
+      width: 100%;
+      height: auto;
+    }
+    @media screen and (max-width:768px){
+      max-width: 12rem;
+    }
+  }
   .zx7__speaker__container {
     background-color: #979797;
     background: url("./assets/home/desktop/image-speaker-zx7.jpg") no-repeat;
@@ -152,47 +188,67 @@ const Wrapper = styled.section`
     color: #000;
   }
 
-  .zx9__description {
-    color: #fff;
-    max-width: 21.9rem;
-    padding: 10rem 0;
-    padding-bottom: 3rem;
-    a:hover{
-      background-color: #4c4c4c;
-    }
-  }
-
   .zx7__description {
     padding: 4rem;
-    a:hover{
+    a:hover {
       background: black;
       color: white;
     }
   }
+  .zx7__btn {
+    color: #000;
+    background-color: transparent;
+    border: 1px solid #000;
+  }
+  .yx1__container{
+    background-color: #fff;
+    justify-content: space-between;
 
+    @media screen and (max-width: 375px){
+      flex-direction: column;
+    }
+  }
+  .yx1__content {
+    background: #f1f1f1;
+    max-width: 540px;
+    width: 100%;
+    height: 320px;
+    border-radius: 15px;
+  }
   .yx1__description {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 26px;
     background-color: #f1f1f1;
     height: 100%;
-    a{
-      margin-left: 30px;
-    }
-    a:hover{
+    border-radius: 10px;
+   
+    a:hover {
       background: black;
       color: white;
     }
   }
-  .yx1__title{
-    margin-top: 70px;
-    margin-left: 30px;
-  }
-
-  .zx9__title,
-  .zx7__title,
   .yx1__title {
-    text-transform: uppercase;
-    font-size: 3rem;
-    line-height: 3rem;
-    margin-bottom: 1.6rem;
+    font-size: max(2rem, 1.4vw);
+
+    @media screen and (max-width: 375px){
+      font-size: 7vw;
+    }
+  }
+  .yx1-image {
+    height: 320px;
+    max-width: 100%;
+    margin-right: 20px;
+    @media screen and (max-width: 375px){
+      margin-right: 0px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      height: 100%;
+    }
   }
 
   .txt {
@@ -216,21 +272,9 @@ const Wrapper = styled.section`
     text-align: center;
   }
 
-  .zx7__btn {
-    color: #000;
-    background-color: transparent;
-    border: 1px solid #000;
-  }
+ 
 
-  .zx9__picture {
-    max-width: 24rem;
-    transform: translateY(78px);
 
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  }
 `;
 
 const Content = styled.main`
@@ -257,7 +301,7 @@ const Button = styled(Link)`
   color: #fff;
   background-color: #d87d4a;
 
-  &:hover{
+  &:hover {
     background-color: #fbaf85;
   }
 `;
@@ -276,7 +320,9 @@ function Home() {
               <br />
               enthusiast.
             </p>
-            <Button to="/product/4">See product</Button>
+            <Button to="/product/4" className="hero__button">
+              See product
+            </Button>
           </div>
           <figure className="hero__figure">
             <img
@@ -326,17 +372,23 @@ function Home() {
         <Content className="yx1__container">
           <picture className="yx1-image">
             <source
-              media="(max-width: 962px)"
+              media="(max-width: 768px)"
               srcSet="./assets/home/tablet/image-earphones-yx1.jpg"
+            />
+             <source
+              media="(max-width: 375px)"
+              srcSet="./assets/home/mobile/image-earphones-yx1.jpg"
             />
             <img
               src="./assets/home/desktop/image-earphones-yx1.jpg"
               alt="yx1__earphones"
             />
           </picture>
-          <div className="yx1__description">
-            <div className="yx1__title">Yx1 earphones</div>
-            <Link to="/product/1">See product</Link>
+          <div className="yx1__content">
+            <div className="yx1__description">
+              <div className="yx1__title">Yx1 earphones</div>
+              <Link to="/product/1">See product</Link>
+            </div>
           </div>
         </Content>
       </Wrapper>

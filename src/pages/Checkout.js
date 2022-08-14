@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Layout from "../components/Layout/Layout";
 import { Link } from "react-router-dom";
 import Summary from "../components/Summary";
-import Confirmation from "../components/Confirmation"
+import Confirmation from "../components/Confirmation";
 
 const Wrapper = styled.section`
   display: flex;
@@ -37,12 +38,12 @@ const Content = styled.main`
     width: 100%;
     padding-bottom: 6rem;
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
       flex-direction: column;
     }
   }
-  .summary{
-    @media (max-width: 768px){
+  .summary {
+    @media (max-width: 768px) {
       width: 100%;
       margin: 0;
       margin-top: 20px;
@@ -96,7 +97,7 @@ const Content = styled.main`
       padding: 1rem 1.4rem;
     }
   }
-  .checkout__info{
+  .checkout__info {
     gap: 1rem;
     justify-content: space-between;
     display: flex;
@@ -206,31 +207,54 @@ const Content = styled.main`
       gap: 1rem;
     }
   }
-
 `;
 
 function Checkout() {
+  const cart = useSelector((state) => state.cart);
+
   const [openModal, setOpenModal] = useState(false);
 
-
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setOpenModal(!openModal);
 
-    const [ 
-      name, 
-      email, 
-      phone, 
-      address, 
-      zipcode, 
-      city, 
+    const [
+      name,
+      email,
+      phone,
+      address,
+      zipcode,
+      city,
       country,
       emoney,
       cash,
       number,
-      numberPin
-   ] = e.target
+      numberPin,
+    ] = e.target;
+  };
+  let total = 0;
+  let shipping = 50;
+  let vat = 1079;
+  let grandTotal = 0;
+
+  for (var n of cart) {
+    total += n.price * n.quantity;
   }
+
+  const formatMoney = (n) => {
+    const lengthPrice = `${n}`.length;
+    if (lengthPrice === 4) {
+      return (n / 1000).toFixed(3);
+    }
+    return n;
+  };
+
+  if (total == 0) {
+    grandTotal = 0;
+  } else {
+    grandTotal = formatMoney(total + shipping);
+  }
+
   const [paymentMethod, setPaymentMethod] = useState("emoney");
   return (
     <Layout>
@@ -246,34 +270,38 @@ function Checkout() {
               <div className="checkout__details">
                 <div className="checkout__input">
                   <label>Name</label>
-                  <input type="text" placeholder="Alexei Ward" required/>
+                  <input type="text" placeholder="Alexei Ward" required />
                 </div>
                 <div className="checkout__input">
                   <label>Email Address</label>
-                  <input type="email" placeholder="Alexei@mail.com" required/>
+                  <input type="email" placeholder="Alexei@mail.com" required />
                 </div>
                 <div className="checkout__input">
                   <label>Phone Number</label>
-                  <input type="number" placeholder="+1 202-555-0136" required/>
+                  <input type="number" placeholder="+1 202-555-0136" required />
                 </div>
               </div>
               <h3>shipping details</h3>
               <div className="checkout__info">
                 <div className="checkout__input">
                   <label>Address</label>
-                  <input type="text" placeholder="1137 Williams Avenue" required/>
+                  <input
+                    type="text"
+                    placeholder="1137 Williams Avenue"
+                    required
+                  />
                 </div>
                 <div className="checkout__input">
                   <label>ZipCode</label>
-                  <input type="text" placeholder="10001" required/>
+                  <input type="text" placeholder="10001" required />
                 </div>
                 <div className="checkout__input">
                   <label>City</label>
-                  <input type="text" placeholder="New York" required/>
+                  <input type="text" placeholder="New York" required />
                 </div>
                 <div className="checkout__input">
                   <label>Country</label>
-                  <input type="text" placeholder="United States" required/>
+                  <input type="text" placeholder="United States" required />
                 </div>
               </div>
               <h3>Payment details</h3>
@@ -322,11 +350,23 @@ function Checkout() {
                 </div>
               </div>
             </div>
-            <Summary />
+            <Summary
+              total={total}
+              grandTotal={grandTotal}
+              vat={vat}
+              shipping={shipping}
+              formatMoney={formatMoney}
+            />
           </form>
         </Content>
       </Wrapper>
-      { openModal && <Confirmation setOpenModal={setOpenModal} openModal={openModal}/>}
+      {openModal && (
+        <Confirmation
+          setOpenModal={setOpenModal}
+          openModal={openModal}
+          grandTotal={grandTotal}
+        />
+      )}
     </Layout>
   );
 }

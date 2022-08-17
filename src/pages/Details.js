@@ -16,6 +16,10 @@ const Wrapper = styled.section`
   margin: 0 auto;
   padding: 0 40px;
 
+  @media (max-width: 375px){
+    padding: 0 10px;
+  }
+
   .back {
     display: block;
     margin-bottom: 2.6rem;

@@ -16,8 +16,16 @@ const CartContainer = styled.div`
   position: absolute;
   right: 5%;
   top: 10%;
-  width: 377px;
+  max-width: 377px;
+  width: 100%;
 
+  @media (max-width: 375px){
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 327px;
+    width: 100%;
+  }
   button {
     color: #d87d4a;
     text-decoration: none;
@@ -55,6 +63,10 @@ const CartContainer = styled.div`
     left: 0;
     right: 0;
     margin: 0 auto;
+
+    @media (max-width: 375px){
+      width: 271px;
+    }
   }
   .cart__footer__para {
     text-transform: uppercase;

@@ -7,12 +7,20 @@ const GalleryContainer = styled.div`
   .gallery {
     display: flex;
     gap: 2rem;
+
+    @media (max-width: 375px) {
+      flex-direction: column;
+    }
   }
 
   .gallery__bloc {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media (max-width: 375px) {
+      gap: 1rem;
+    }
   }
   .gallery__picture img {
     border-radius: 6px;
@@ -28,7 +36,11 @@ function Gallery({ findProduct }) {
         <div className="gallery__bloc">
           <picture className="gallery__picture">
             <source
-              media="(max-width: 960px)"
+              media="(max-width: 375px)"
+              srcSet={findProduct.gallery.first.mobile}
+            />
+            <source
+              media="(max-width: 768px)"
               srcSet={findProduct.gallery.first.tablet}
             />
             <img
@@ -38,7 +50,11 @@ function Gallery({ findProduct }) {
           </picture>
           <picture className="gallery__picture">
             <source
-              media="(max-width: 960px)"
+              media="(max-width: 375px)"
+              srcSet={findProduct.gallery.second.mobile}
+            />
+            <source
+              media="(max-width: 768px)"
               srcSet={findProduct.gallery.second.tablet}
             />
             <img
@@ -49,7 +65,11 @@ function Gallery({ findProduct }) {
         </div>
         <picture className="gallery__picture">
           <source
-            media="(max-width: 960px)"
+            media="(max-width: 375px)"
+            srcSet={findProduct.gallery.third.mobile}
+          />
+          <source
+            media="(max-width: 768px)"
             srcSet={findProduct.gallery.third.tablet}
           />
           <img src={findProduct.gallery.third.desktop} alt={findProduct.name} />

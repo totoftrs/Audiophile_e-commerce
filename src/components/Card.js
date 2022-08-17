@@ -16,6 +16,9 @@ const CardProduct = styled.div`
   @media (max-width: 768px) {
     gap: 5rem;
   }
+  @media (max-width: 375px) {
+    margin-bottom: 4rem;
+  }
   .card__two {
     flex-direction: row-reverse;
   }
@@ -70,9 +73,13 @@ const CardProduct = styled.div`
   .card__h2 {
     font-size: 2.7rem;
     max-width: 19rem;
-    line-height: 2.7rem;
+    line-height: 1;
     font-weight: 700;
     text-transform: uppercase;
+
+    @media (max-width: 375px) {
+      font-size: 9vw;
+    }
   }
 
   .card__para {
@@ -116,9 +123,12 @@ const CardProductId = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2rem;
   justify-content: space-between;
   margin-bottom: 6rem;
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+  }
 
   .card__two {
     flex-direction: row-reverse;
@@ -154,11 +164,17 @@ const CardProductId = styled.div`
     max-width: 44%;
     z-index: 1;
     color: #000;
+    padding-left: 20px;
 
     @media (max-width: 768px) {
       text-align: left;
       max-width: 48%;
       align-items: left;
+    }
+    @media (max-width: 375px) {
+      max-width: 100%;
+      padding-left: 0;
+      padding-top: 20px;
     }
   }
 
@@ -176,6 +192,10 @@ const CardProductId = styled.div`
     padding: 10px 0;
     font-weight: 700;
     text-transform: uppercase;
+
+    @media (max-width: 375px) {
+      font-size: 2rem;
+    }
   }
 
   .card__para {
@@ -252,7 +272,7 @@ const Button = styled(Link)`
   color: #fff;
   background-color: #d87d4a;
 
-  &:hover{
+  &:hover {
     background-color: #fbaf85;
   }
 `;
@@ -283,9 +303,14 @@ function Card({ title, formatMoney }) {
       <CardProductId className="card">
         <picture className="card__picture">
           <source
+            media="(max-width: 375px)"
+            srcSet={findProductId.image.mobile}
+          />
+          <source
             media="(max-width: 768px)"
             srcSet={findProductId.image.tablet}
           />
+
           <img
             src={findProductId.categoryImage.desktop}
             alt={findProductId.name}
@@ -297,7 +322,9 @@ function Card({ title, formatMoney }) {
           )}
           <h2 className="card__h2">{findProductId.name}</h2>
           <p className="card__para">{findProductId.description}</p>
-          <div className="card__price">$ {formatMoney(findProductId.price)}</div>
+          <div className="card__price">
+            $ {formatMoney(findProductId.price)}
+          </div>
           <div className="card__button__container">
             <div className="card__button__select">
               <button onClick={decrement}>-</button>
@@ -320,9 +347,14 @@ function Card({ title, formatMoney }) {
       <div className="card__content">
         <picture className="card__picture">
           <source
+            media="(max-width: 375px)"
+            srcSet={findProduct.categoryImage.mobile}
+          />
+          <source
             media="(max-width: 768px)"
             srcSet={findProduct.categoryImage.tablet}
           />
+
           <img src={findProduct.categoryImage.desktop} alt={findProduct.name} />
         </picture>
         <div className="card__info">

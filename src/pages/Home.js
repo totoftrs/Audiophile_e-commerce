@@ -116,6 +116,11 @@ const Wrapper = styled.section`
     line-height: 1;
     margin-bottom: 1.6rem;
   }
+  .zx7__title{
+    @media (max-width: 375px) {
+      font-size: 5.5vw;
+    }
+  }
   .speaker__container {
     background-color: #d87d4a;
     background-image: url("./assets/home/desktop/pattern-circles.svg");
@@ -186,10 +191,21 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: row;
     color: #000;
+    border-radius: 15px;
+    @media screen and (max-width:768px){
+      background: url("./assets/home/tablet/image-speaker-zx7.jpg") no-repeat;
+    }
+    @media screen and (max-width:375px){
+      background: url("./assets/home/mobile/image-speaker-zx7.jpg") no-repeat;
+      background-size: cover;
+    }
   }
 
   .zx7__description {
     padding: 4rem;
+    @media screen and (max-width:375px){
+      padding-left: 10px;
+    }
     a:hover {
       background: black;
       color: white;
@@ -225,6 +241,11 @@ const Wrapper = styled.section`
     height: 100%;
     border-radius: 10px;
    
+    a{
+      background-color: transparent;
+      border: 1px solid #000;
+      color: #000;
+    }
     a:hover {
       background: black;
       color: white;
@@ -252,7 +273,7 @@ const Wrapper = styled.section`
   }
 
   .txt {
-    margin-bottom: 1.6rem;
+    margin: 20px 10px;
   }
 
   a {
@@ -359,10 +380,7 @@ function Home() {
         <Content className="zx7__speaker__container">
           <div className="zx7__description">
             <div className="zx7__title">
-              {" "}
-              ZX7
-              <br />
-              speaker
+              ZX7 speaker
             </div>
             <Link to="/product/5" className="zx7__btn">
               See product

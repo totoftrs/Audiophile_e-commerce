@@ -16,8 +16,16 @@ const ConfirmationContainer = styled.div`
   background-color: #fff;
   border-radius: 10px;
 
+  @media (max-width: 375px){
+        max-width: 327px;
+      }
+
   .content {
     padding: 40px;
+
+    @media (max-width: 375px){
+        padding: 30px;
+      }
   }
   h1 {
     width: 70%;
@@ -25,6 +33,10 @@ const ConfirmationContainer = styled.div`
     line-height: 1;
     text-transform: uppercase;
     padding: 30px 0;
+
+    @media (max-width: 375px){
+        font-size: 5.5vw;
+      }
   }
   .confirmation__para {
     color: #979797;
@@ -49,12 +61,21 @@ const ConfirmationContainer = styled.div`
     left: 0;
     right: 0;
     margin: 0 auto;
+
+    @media (max-width: 375px){
+        max-width: 263px;
+      }
   }
   .confirmation__wrapper {
     display: flex;
     width: 100%;
     height: 140px;
     margin: 30px 0;
+
+    @media (max-width: 375px){
+        display: flex;
+        flex-direction: column;
+      }
   }
   .confirmation__product {
     display: flex;
@@ -63,6 +84,10 @@ const ConfirmationContainer = styled.div`
     background-color: #f1f1f1;
     width: 50%;
     padding: 15px;
+
+    @media (max-width: 375px){
+        width: 100%;
+      }
   }
   .confirmation__product img {
     height: 50px;
@@ -72,6 +97,10 @@ const ConfirmationContainer = styled.div`
     width: 50%;
     background-color: #000;
     padding: 35px;
+
+    @media (max-width: 375px){
+        width: 100%;
+      }
   }
   .confirmation__grandTotal p {
     text-transform: uppercase;
@@ -86,10 +115,19 @@ const ConfirmationContainer = styled.div`
   .confirmation__quantity {
     color: #979797;
     font-size: 1.5vw;
+
+    @media (max-width: 768px){
+        font-size: 1rem;
+      }
   }
   .name{
     font-weight: bold;
     font-size: 1.5vw;
+
+    @media (max-width: 768px){
+        font-size: 1rem;
+      }
+    
   }
   .infos {
     display: flex;

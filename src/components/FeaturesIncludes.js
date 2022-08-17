@@ -6,7 +6,7 @@ const Features = styled.div`
   justify-content: space-between;
   gap: 8rem;
   margin-bottom: 4rem;
-  @media (max-width: 960px) {
+  @media (max-width: 768px) {
     flex-direction: column;
     gap: 2rem;
     margin-bottom: 8rem;
@@ -27,11 +27,14 @@ const Features = styled.div`
   }
   .features__inthebox {
     width: 40%;
-    @media (max-width: 960px) {
+    @media (max-width: 768px) {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       width: 100%;
+    }
+    @media (max-width: 375px) {
+      flex-direction: column;
     }
 
     .features__ul {

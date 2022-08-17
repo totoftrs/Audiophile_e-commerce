@@ -65,6 +65,7 @@ const Content = styled.main`
     text-transform: uppercase;
   }
   .checkout__form {
+    width: 100%;
     padding: 2rem;
     background-color: #fff;
     border-radius: 10px;
@@ -84,6 +85,10 @@ const Content = styled.main`
       display: flex;
       flex-direction: column;
       width: 47%;
+
+      @media (max-width: 375px){
+        width: 100%;
+      }
     }
     label {
       padding-bottom: 0.5rem;
@@ -110,6 +115,9 @@ const Content = styled.main`
       display: flex;
       flex-direction: column;
       width: 47%;
+      @media (max-width: 375px){
+        width: 100%;
+      }
     }
     label {
       padding-bottom: 0.5rem;
@@ -134,11 +142,22 @@ const Content = styled.main`
     .method-container {
       display: flex;
       justify-content: space-between;
+      @media (max-width: 375px){
+        flex-direction: column;
+      }
     }
     .checkout__input {
       display: flex;
       flex-direction: column;
       width: 47%;
+
+      @media (max-width: 768px){
+        max-width: 47%;
+        width: 100%;
+      }
+      @media (max-width: 375px){
+        max-width: 100%;
+      }
     }
     label {
       padding-bottom: -0.5rem;
@@ -154,6 +173,9 @@ const Content = styled.main`
 
     .container-radio {
       width: 47%;
+      @media (max-width: 375px){
+        width: 100%;
+      }
     }
     .checkout__method {
       display: flex;
@@ -205,6 +227,10 @@ const Content = styled.main`
     .checkout__cart {
       display: flex;
       gap: 1rem;
+
+      @media (max-width: 375px){
+        flex-direction: column;
+      }
     }
   }
 `;

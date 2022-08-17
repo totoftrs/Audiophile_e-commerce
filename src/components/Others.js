@@ -16,7 +16,7 @@ const Content = styled.main`
   display: flex;
   justify-content: center;
   padding: 0 40px;
-  @media (max-width: 960px) {
+  @media (max-width: 768px) {
     gap: 1rem;
   }
 
@@ -25,19 +25,29 @@ const Content = styled.main`
     font-size: 2.2rem;
     text-align: center;
     padding-bottom: 3rem;
+
+    @media (max-width: 375px){
+      font-size: 7vw;
+    }
   }
   .others__alsoLike {
     display: flex;
     gap: 2rem;
+
+    @media (max-width: 375px){
+        display: flex;
+        flex-direction: column;
+      }
 
     .others__container {
       text-align: center;
     }
     .others__picture {
       width: 20rem;
-      @media (max-width: 960px) {
+      @media (max-width: 768px) {
         width: 13rem;
       }
+     
 
       img {
         width: 100%;
@@ -55,10 +65,12 @@ const Content = styled.main`
 const Button = styled(Link)`
   border: none;
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
+  line-height: 48px;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 1rem 2rem;
+  height: 48px;
+  width: 160px;
   text-transform: uppercase;
   transition: 0.5s;
   text-decoration: none;
@@ -67,7 +79,6 @@ const Button = styled(Link)`
   background-color: #d87d4a;
 `;
 function Others({ findProduct }) {
-  // console.log (findProduct)
   return (
     <Wrapper>
       <Content>
@@ -78,7 +89,11 @@ function Others({ findProduct }) {
               <div key={index} className="others__container">
                 <picture className="others__picture">
                   <source
-                    media="(max-width: 960px)"
+                    media="(max-width: 375px)"
+                    srcSet={other.image.mobile}
+                  />
+                    <source
+                    media="(max-width: 768px)"
                     srcSet={other.image.tablet}
                   />
                   <img src={other.image.desktop} alt={other.slug} />

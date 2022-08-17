@@ -26,9 +26,13 @@ const Content = styled.main`
   .profile__h2 {
     text-transform: uppercase;
     font-size: 2.7rem;
-    line-height: 2.9rem;
+    line-height: 1.2;
     letter-spacing: 1.4px;
     padding-bottom: 2rem;
+
+    @media (max-width: 375px) {
+      font-size: 6.5vw;
+    }
   }
   span {
     color: #d87d4a;
@@ -74,11 +78,11 @@ function Profile() {
         <picture className="profile__picture">
         <source
             media="(max-width: 375px)"
-            srcSet="./assets/shared/mobile/image-best-gear.jpg"
+            srcSet="/assets/shared/mobile/image-best-gear.jpg"
           />
           <source
             media="(max-width: 768px)"
-            srcSet="./assets/shared/tablet/image-best-gear.jpg"
+            srcSet="/assets/shared/tablet/image-best-gear.jpg"
           />
        
           <img

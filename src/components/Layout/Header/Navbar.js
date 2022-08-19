@@ -30,7 +30,7 @@ const NavbarContainer = styled.div`
   margin: 0 auto;
   z-index: 1;
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     max-width: none;
     justify-content: space-between;
@@ -59,7 +59,7 @@ const NavbarContainer = styled.div`
     text-decoration: none;
   }
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 768px) {
     #mobile-menu {
       padding-right: 3rem;
     }
@@ -92,7 +92,9 @@ const NavbarContainer = styled.div`
 
     ul.active {
       display: grid;
-      height: 30vh;
+      max-height: 28vh;
+      height: 100vh;
+
       z-index: 99;
       transition: all 0.8s ease;
       opacity: 1;
@@ -113,7 +115,7 @@ const NavbarMenu = styled.ul`
   text-transform: uppercase;
 
   .navbar__item {
-    height: 80px;
+    height: 50px;
   }
   .navbar__links {
     display: flex;

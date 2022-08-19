@@ -22,6 +22,24 @@ const Content = styled.main`
   width: 100%;
   padding: 0 40px;
 
+  .error-input {
+    border: 1px solid #cd2c2c;
+  }
+  
+  [data-error]:after{
+    content: attr(data-error);
+    color: #cd2c2c;
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .error-msg {
+    color: #cd2c2c;
+  }
+
   button {
     border: none;
     background-color: transparent;
@@ -75,6 +93,9 @@ const Content = styled.main`
       font-size: 0.8rem;
     }
   }
+  .checkout__input{
+    position: relative;
+  }
   .checkout__details {
     gap: 1rem;
     display: flex;
@@ -86,7 +107,7 @@ const Content = styled.main`
       flex-direction: column;
       width: 47%;
 
-      @media (max-width: 375px){
+      @media (max-width: 375px) {
         width: 100%;
       }
     }
@@ -115,7 +136,7 @@ const Content = styled.main`
       display: flex;
       flex-direction: column;
       width: 47%;
-      @media (max-width: 375px){
+      @media (max-width: 375px) {
         width: 100%;
       }
     }
@@ -142,7 +163,7 @@ const Content = styled.main`
     .method-container {
       display: flex;
       justify-content: space-between;
-      @media (max-width: 375px){
+      @media (max-width: 375px) {
         flex-direction: column;
       }
     }
@@ -151,11 +172,11 @@ const Content = styled.main`
       flex-direction: column;
       width: 47%;
 
-      @media (max-width: 768px){
+      @media (max-width: 768px) {
         max-width: 47%;
         width: 100%;
       }
-      @media (max-width: 375px){
+      @media (max-width: 375px) {
         max-width: 100%;
       }
     }
@@ -173,7 +194,7 @@ const Content = styled.main`
 
     .container-radio {
       width: 47%;
-      @media (max-width: 375px){
+      @media (max-width: 375px) {
         width: 100%;
       }
     }
@@ -228,7 +249,7 @@ const Content = styled.main`
       display: flex;
       gap: 1rem;
 
-      @media (max-width: 375px){
+      @media (max-width: 375px) {
         flex-direction: column;
       }
     }
@@ -242,21 +263,32 @@ function Checkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setOpenModal(!openModal);
+    const AllInput = [...e.target];
+    AllInput.pop()
+    console.log(AllInput)
+    let error = 0;
 
-    const [
-      name,
-      email,
-      phone,
-      address,
-      zipcode,
-      city,
-      country,
-      emoney,
-      cash,
-      number,
-      numberPin,
-    ] = e.target;
+    AllInput.forEach((item) => {
+
+      if (item.value == "") {
+        error += 1;
+        console.log("item",item)
+        item.classList.add("error-input");
+        item.parentElement.classList.add("error-msg");
+        // item.setAttribute('data-error','cant')
+        item.parentElement.dataset.error = "empty"
+      }else{
+        item.classList.remove("error-input");
+        item.parentElement.classList.remove("error-msg");
+        item.parentElement.childNodes[0].classList.remove("error-msg")
+        delete item.parentElement.dataset.error 
+
+      }
+   
+    });
+    if(!error){
+      setOpenModal(!openModal);
+    }
   };
   let total = 0;
   let shipping = 50;
@@ -296,38 +328,34 @@ function Checkout() {
               <div className="checkout__details">
                 <div className="checkout__input">
                   <label>Name</label>
-                  <input type="text" placeholder="Alexei Ward" required />
+                  <input type="text" placeholder="Alexei Ward"/>
                 </div>
                 <div className="checkout__input">
                   <label>Email Address</label>
-                  <input type="email" placeholder="Alexei@mail.com" required />
+                  <input type="email" placeholder="Alexei@mail.com" />
                 </div>
                 <div className="checkout__input">
                   <label>Phone Number</label>
-                  <input type="number" placeholder="+1 202-555-0136" required />
+                  <input type="number" placeholder="+1 202-555-0136" />
                 </div>
               </div>
               <h3>shipping details</h3>
               <div className="checkout__info">
                 <div className="checkout__input">
                   <label>Address</label>
-                  <input
-                    type="text"
-                    placeholder="1137 Williams Avenue"
-                    required
-                  />
+                  <input type="text" placeholder="1137 Williams Avenue" />
                 </div>
                 <div className="checkout__input">
                   <label>ZipCode</label>
-                  <input type="text" placeholder="10001" required />
+                  <input type="text" placeholder="10001" />
                 </div>
                 <div className="checkout__input">
                   <label>City</label>
-                  <input type="text" placeholder="New York" required />
+                  <input type="text" placeholder="New York" />
                 </div>
                 <div className="checkout__input">
                   <label>Country</label>
-                  <input type="text" placeholder="United States" required />
+                  <input type="text" placeholder="United States" />
                 </div>
               </div>
               <h3>Payment details</h3>

@@ -60,8 +60,6 @@ const SectionHero = styled.section`
     }
     @media screen and (max-width: 375px) {
       transform: translateY(-42px);
-      /* margin-right: 108vw;
-      width: 310vw; */
     }
   }
 

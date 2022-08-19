@@ -59,6 +59,10 @@ const Content = styled.main`
       font-weight: 600;
       padding-bottom: 1.4rem;
       font-size: 1.5rem;
+
+      @media (max-width: 520px){
+        font-size: 2.7vw;
+      }
     }
   }
 `;
@@ -70,13 +74,18 @@ const Button = styled(Link)`
   font-weight: 700;
   letter-spacing: 1px;
   height: 48px;
-  width: 160px;
+  max-width: 160px;
+  width: 100%;
   text-transform: uppercase;
   transition: 0.5s;
   text-decoration: none;
 
   color: #fff;
   background-color: #d87d4a;
+
+  @media (max-width: 450px){
+    font-size: 2.2vw;
+  }
 `;
 function Others({ findProduct }) {
   return (

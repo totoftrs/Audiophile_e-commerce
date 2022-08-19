@@ -126,7 +126,7 @@ const CardProductId = styled.div`
   justify-content: space-between;
   margin-bottom: 6rem;
 
-  @media (max-width: 375px) {
+  @media (max-width: 650px) {
     flex-direction: column;
   }
 
@@ -171,7 +171,7 @@ const CardProductId = styled.div`
       max-width: 48%;
       align-items: left;
     }
-    @media (max-width: 375px) {
+    @media (max-width: 650px) {
       max-width: 100%;
       padding-left: 0;
       padding-top: 20px;
@@ -303,7 +303,7 @@ function Card({ title, formatMoney }) {
       <CardProductId className="card">
         <picture className="card__picture">
           <source
-            media="(max-width: 375px)"
+            media="(max-width:650px)"
             srcSet={findProductId.image.mobile}
           />
           <source

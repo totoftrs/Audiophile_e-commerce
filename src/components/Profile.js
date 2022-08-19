@@ -86,7 +86,7 @@ function Profile() {
           />
        
           <img
-            src="./assets/shared/desktop/image-best-gear.jpg"
+            src="/assets/shared/desktop/image-best-gear.jpg"
             alt="best-gear"
           />
         </picture>

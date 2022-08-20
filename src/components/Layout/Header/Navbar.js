@@ -92,7 +92,7 @@ const NavbarContainer = styled.div`
 
     ul.active {
       display: grid;
-      max-height: 28vh;
+      max-height: 30vh;
       height: 100vh;
 
       z-index: 99;
@@ -115,7 +115,7 @@ const NavbarMenu = styled.ul`
   text-transform: uppercase;
 
   .navbar__item {
-    height: 50px;
+    height: 60px;
   }
   .navbar__links {
     display: flex;

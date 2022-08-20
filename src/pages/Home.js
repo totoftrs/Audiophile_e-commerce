@@ -53,7 +53,7 @@ const SectionHero = styled.section`
   }
 
   img {
-    width: 200%;
+    max-width: 200%;
     margin-right: 17vw;
     @media screen and (max-width: 768px) {
       margin-right: 60vw;

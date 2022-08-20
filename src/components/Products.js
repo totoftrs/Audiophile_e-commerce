@@ -25,7 +25,7 @@ const Content = styled.main`
   @media (max-width: 768px) {
     justify-content: space-between;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     flex-direction: column;
   }
 
@@ -35,7 +35,7 @@ const Content = styled.main`
     flex-direction: column;
     z-index: 1;
     margin: 0 6px;
-    @media (max-width: 375px) {
+    @media (max-width: 450px) {
     margin-bottom: 3rem;
   }
   }
@@ -54,9 +54,6 @@ const Content = styled.main`
   .products__figure {
     z-index: 1;
     transform: translateY(-20px);
-    @media (max-width: 375px) {
-      /* transform: translateY(0px); */
-    }
   }
   .products__h3 {
     font-size: max(1vw, 1.2rem);
@@ -73,7 +70,7 @@ const Content = styled.main`
     @media (max-width: 768px) {
       font-size: 1.9vw;
     }
-    @media (max-width: 375px) {
+    @media (max-width: 450px) {
       font-size: 4.5vw;
     }
   }
@@ -98,13 +95,13 @@ const Content = styled.main`
     @media (max-width: 768px) {
       font-size: 1.6vw;
     }
-    @media (max-width: 375px) {
+    @media (max-width: 450px) {
       font-size: 4vw;
     }
   }
   .products__btn-shop img {
     height: 0.8vw;
-    @media (max-width: 375px) {
+    @media (max-width: 450px) {
       height: 2vw;
     }
   }
